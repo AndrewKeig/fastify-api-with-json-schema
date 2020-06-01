@@ -4,9 +4,11 @@ const getAccount = token => {
   // call a db/cognito/jwt
   if (token === '1111-2222-3333-444') {
     return {
-      id: '12345'
-    }
+      id: '12345',
+    };
   }
+
+  return null;
 };
 
 module.exports.authenticate = async (request, reply) => {

@@ -1,7 +1,7 @@
 # fastify-api-with-json-schema
 
 ### Introduction
-This repository is a simple boilerplate for fastify, with json schema validation running of a swagger file.
+This repository is a simple boilerplate for fastify, with json schema validation running of an external swagger file.
 
 ### API/Routes
 
@@ -39,7 +39,7 @@ You can run the tests with the following, the tests are currently written using 
 
 `npm test`
 
-## Line
+## Lint
 
 We are using eslint, 
 

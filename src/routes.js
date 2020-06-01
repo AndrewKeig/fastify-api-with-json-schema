@@ -1,7 +1,7 @@
+const { authenticate } = require('./services/authentication');
 const { getHealthcheckRoute } = require('./routes/healthcheck/get');
 const { getUserRoute } = require('./routes/user/get');
 const { addUserRoute } = require('./routes/user/add');
-const { authenticate } = require('./services/authentication');
 
 module.exports = {
   getAPIStatus: async (request, reply) => {
