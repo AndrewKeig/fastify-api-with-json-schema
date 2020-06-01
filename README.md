@@ -1,22 +1,7 @@
-# fastify-swagger-api
+# fastify-api-with-json-schema
 
 ### Introduction
-This repository is a simple boilerplate for fastify, with swagger/json schema validation running of a swagger file.
-
-
-### Tools
-
-The api uses https://www.fastify.io/,  which is the fastest framework for node.js, and supports swagger/json-schema out of the box.
-
-To achieve this we use a couple of key plugins, to bind the swagger doc to fastify routes:
-
-- https://github.com/seriousme/fastify-openapi-glue
-
-- https://github.com/fastify/fastify-swagger
-
-For testing we are using swagger-fixtures, to create test fixtures
-
-- https://github.com/AndrewKeig/swagger-fixtures
+This repository is a simple boilerplate for fastify, with json schema validation running of a swagger file.
 
 ### API/Routes
 

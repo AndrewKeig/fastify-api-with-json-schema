@@ -1,6 +1,6 @@
 {
-  "name": "fastify-swagger-api",
-  "description": "",
+  "name": "fastify-api-with-json-schema",
+  "description": "This repository is a simple boilerplate for fastify, with json schema validation running of an external swagger file.",
   "version": "1.0.0",
   "scripts": {
     "start": "node index.js",
