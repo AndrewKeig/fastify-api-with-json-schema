@@ -1,0 +1,43 @@
+{
+  "name": "fastify-swagger-api",
+  "description": "",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node index.js",
+    "test:watch": "jest --watch",
+    "lint": "eslint 'src/**/*.js'",
+    "fix": "prettier --write '*.js'",
+    "test": "TEST=true jest --runInBand",
+    "unit-test": "jest unit --runInBand",
+    "coverage": "jest --coverage --runInBand",
+    "eslint:github-action": "eslint src/",
+    "depcheck": "depcheck ."
+  },
+  "directories": {
+    "test": "test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run depcheck",
+      "pre-push": "npm run depcheck"
+    }
+  },
+  "collectCoverageFrom": [
+    "src"
+  ],
+  "dependencies": {
+    "fastify": "^2.11.0",
+    "fastify-openapi-glue": "^1.5.0",
+    "fastify-swagger": "^2.5.0"
+  },
+  "devDependencies": {
+    "depcheck": "^0.9.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "swagger-fixtures": "^1.0.2"
+  }
+}

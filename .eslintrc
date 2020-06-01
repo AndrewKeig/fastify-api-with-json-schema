@@ -1,0 +1,14 @@
+{
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": ["airbnb-base"],
+  "rules": {
+    "arrow-parens": 0,
+    "implicit-arrow-linebreak": 0,
+    "arrow-body-style": 0
+  }
+}

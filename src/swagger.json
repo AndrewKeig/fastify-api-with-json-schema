@@ -1,0 +1,277 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0.1",
+    "title" : "fastify-swagger-api",
+    "description" : ""
+  },
+  "host" : "localhost",
+  "basePath" : "/v1",
+  "securityDefinitions" : {
+    "bearerAuth" : {
+      "type" : "apiKey",
+      "in" : "header",
+      "name" : "token"
+    }
+  },
+  "schemes" : [ "https" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/healthcheck" : {
+      "get" : {
+        "description" : "Get API status",
+        "summary" : "getAPIStatus",
+        "tags" : [ "HealthCheck" ],
+        "operationId" : "getAPIStatus",
+        "deprecated" : false,
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful Operation."
+          },
+          "401" : {
+            "description" : "Access token is missing or invalid"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/{userId}" : {
+      "get" : {
+        "description" : "Get user",
+        "summary" : "getUser",
+        "tags" : [ "User" ],
+        "operationId" : "getUser",
+        "deprecated" : false,
+        "produces" : [ "application/json" ],
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ],
+        "parameters" : [{
+          "name" : "userId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string",
+          "description" : "The users identifier",
+          "minLength" : 12,
+          "maxLength" : 12
+        }], 
+        "responses" : {
+          "200" : {
+            "description" : "Successful Operation.",
+            "schema" : {
+              "$ref" : "#/definitions/UserResponse"
+            }
+          },
+          "400" : {
+            "description" : "Invalid input parameter",
+            "schema" : {
+              "$ref" : "#/definitions/CommonResponse"
+            }
+          },
+          "401" : {
+            "description" : "Access token is missing or invalid",
+            "schema" : {
+              "$ref" : "#/definitions/CommonResponse"
+            }
+          }
+        }
+      }
+    },
+    "/user" : {
+      "post" : {
+        "description" : "Adds a user",
+        "summary" : "addUser",
+        "tags" : [ "User" ],
+        "operationId" : "addUser",
+        "deprecated" : false,
+        "produces" : [ "application/json" ],
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : false,
+          "description" : "User record to add",
+          "schema" : {
+            "$ref" : "#/definitions/User"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "User created",
+            "schema" : {
+              "$ref" : "#/definitions/CommonResponse"
+            }
+          },
+          "401" : {
+            "description" : "Access token is missing or invalid",
+            "schema" : {
+              "$ref" : "#/definitions/CommonResponse"
+            }
+          },
+          "422" : {
+            "description" : "User already exists",
+            "schema" : {
+              "$ref" : "#/definitions/CommonResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Address": {
+      "type": "object",
+      "properties": {
+        "street": {
+          "type": "string",
+          "example": "no 4"
+        },
+        "postcode": {
+          "type": "string",
+          "example": "w1"
+        }
+      }
+    },
+    "DayOfWeek": {
+      "title": "DayOfWeek",
+      "description": "Day of the Week",
+      "type": "string",
+      "example": "Monday",
+      "enum": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "example": 12345
+        },
+        "username": {
+          "type": "string",
+          "example": "airasoul"
+        },
+        "firstName": {
+          "type": "string",
+          "example": "andrew"
+        },
+        "lastName": {
+          "type": "string",
+          "example": "keig"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "example": "andrew.keig@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "password"
+        },
+        "active": {
+          "description": "Set it to True if active.",
+          "example": false,
+          "type": "boolean",
+          "default": false
+        },
+        "dayOfBirth": {
+          "$ref": "#/definitions/DayOfWeek"
+        },
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "phones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "number": {
+                "description": "List of phone numbers",
+                "example": "07943818181",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "dimensions": {
+          "type": "object",
+          "properties": {
+            "weight": {
+              "description": "weight in kg",
+              "example": 180,
+              "type": "number"
+            },
+            "height": {
+              "description": "height in metres",
+              "example": 120,
+              "type": "number"
+            }
+          }
+        },
+        "userStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "User Status",
+          "example": 1
+        }
+      }
+    },
+    "UserResponse" : {
+      "title" : "UserResponse",
+      "type" : "object",
+      "properties" : {
+        "requestId" : {
+          "description" : "Unique ID for the request",
+          "example" : "0051t000000gYNPAA2",
+          "type" : "string"
+        },
+        "responseTimeStamp" : {
+          "description" : "Response Time stamp. Format As defined by date-time - RFC3339.",
+          "example" : "6.159532994031906",
+          "type" : "number",
+          "format" : "float"
+        },
+        "message" : {
+          "type" : "string",
+          "maxLength" : 255,
+          "description" : "Message Text.",
+          "example" : "Missing field value"
+        },
+        "data" : {
+          "type" : "object",
+          "$ref" : "#/definitions/User"
+        }
+      }
+    },
+    "CommonResponse" : {
+      "title" : "CommonResponse",
+      "type" : "object",
+      "properties" : {
+        "requestId" : {
+          "description" : "Unique ID for the request",
+          "example" : "0051t000000gYNPAA2",
+          "type" : "string"
+        },
+        "responseTimeStamp" : {
+          "description" : "Response Time stamp. Format As defined by date-time - RFC3339.",
+          "example" : "6.159532994031906",
+          "type" : "number",
+          "format" : "float"
+        },
+        "message" : {
+          "type" : "string",
+          "maxLength" : 255,
+          "description" : "Message Text.",
+          "example" : "Missing field value"
+        }
+      }
+    }
+  }
+}
