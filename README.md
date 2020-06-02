@@ -13,11 +13,11 @@ To achieve this we use a couple of modules:
  
 This series of posts contains three entries: 
  
-1. Building APIs with Fastify, JSON Schema - setup and configure fastify and fastify-openapi-glue, to bind the swagger specification to fastify routes.
+1. [Building APIs with Fastify, JSON Schema](https://airasoul.com/fastify-building-apis-with-json-schema/index.html) - setup and configure fastify and fastify-openapi-glue, to bind the swagger specification to fastify routes.
  
-2. Documentating APIs with fastify, JSON Schema - setup fastify-swagger to generate swagger documentation.
+2. [Documentating APIs with fastify, JSON Schema](https://airasoul.com/fastify-documenting-apis-with-json-schema/index.html) - setup fastify-swagger to generate swagger documentation.
  
-3. Testing APis with Fastify, JSON Schema - add integration tests using swagger-fixtures, to create test fixtures, which effectively binds our tests to the external swagger document using swagger examples.
+3. [Testing APis with Fastify, JSON Schema](https://airasoul.com/testing-apis-with-fastify-json-schema/index.html) - add integration tests using swagger-fixtures, to create test fixtures, which effectively binds our tests to the external swagger document using swagger examples.
 
 ### API/Routes
 
