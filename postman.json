@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "66cedf73-63e2-49b3-9829-4db07c1da502",
+		"name": "fastify-api-with-json-schema",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "1111-2222-3333-444",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 12345,\n  \"username\": \"airasoul\",\n  \"firstName\": \"andrew\",\n  \"lastName\": \"keig\",\n  \"email\": \"andrew.keig@gmail.com\",\n  \"password\": \"password\",\n  \"active\": false,\n  \"dayOfBirth\": \"Monday\",\n  \"address\": {\n    \"street\": \"no 4\",\n    \"postcode\": \"w1\"\n  },\n  \"phones\": [\n    {\n      \"number\": \"07943818181\"\n    }\n  ],\n  \"dimensions\": {\n    \"weight\": 180,\n    \"height\": 120\n  },\n  \"userStatus\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/v1/user",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "1111-2222-3333-444",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/v1/user/12345",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"user",
+						"12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "1111-2222-3333-444",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/v1/healthcheck",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

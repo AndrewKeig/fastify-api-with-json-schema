@@ -9,6 +9,12 @@ const app = Fastify({
   pluginTimeout: 10000,
 });
 
+const glueOptions = {
+  specification,
+  noAdditional: true,
+  service: `${__dirname}/routes.js`,
+};
+
 const swaggerOptions = {
   mode: 'static',
   specification: {
@@ -23,12 +29,6 @@ const swaggerOptions = {
     },
   },
   exposeRoute: true,
-};
-
-const glueOptions = {
-  specification,
-  noAdditional: true,
-  service: `${__dirname}/routes.js`,
 };
 
 app.register(require('fastify-swagger'), swaggerOptions);
